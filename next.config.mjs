@@ -3,15 +3,12 @@ const nextConfig = {
   reactStrictMode: true,
 
     images: {
-      unoptimized: true,
-        domains: ["upload.wikimedia.org",
-          "www.jobscan.co",
-          "cultivatedculture.com",
-          "www.resumeworded.com",
-        "www.tealhq.com",
-      "d1eipm3vz40hy0.cloudfront.net",
-    "zety.com"], // 允许加载 Wikimedia 的图片
-      },
+      unoptimized: false,
+    },
+    compiler: {
+      styledComponents: true, // 确保 Next.js 处理 styled-components
+    },
+    
 };
 
 export default nextConfig;

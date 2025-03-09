@@ -1,8 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
-import Footer from "@/components/Footer";
-
+import LoaderWrapper from "@/components/loader-wrapper";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -15,44 +13,24 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   title: "Job Search",
-  description: "Looking for a job in Canada? My platform offers essential tools for job seekers, including job postings, coding practice, ATS resume optimization, resume editor, keyword extraction, and immigration news. Get ahead in your job search with AI-powered insights and career guidance.",
-  keywords: "job search tools, ATS resume optimization, resume editing, job posting Canada, keyword extraction for resumes, coding practice, job search Canada, software engineer job search, resume ATS checker, immigration news Canada, job application optimization, technical interview practice, job hunting tools, career advice for international students, new graduate job search, best resume editor",
+  description:
+    "Looking for a job in Canada? My platform offers essential tools for job seekers, including job postings, coding practice, ATS resume optimization, resume editor, keyword extraction, and immigration news. Get ahead in your job search with AI-powered insights and career guidance.",
+  keywords:
+    "job search tools, ATS resume optimization, resume editing, job posting Canada, keyword extraction for resumes, coding practice, job search Canada, software engineer job search, resume ATS checker, immigration news Canada, job application optimization, technical interview practice, job hunting tools, career advice for international students, new graduate job search, best resume editor",
   icons: {
     icon: "/icon.png", // 你也可以换成 PNG 或 SVG，如 "/favicon.png"
   },
 };
 
-const navLinks = [
-  { label: "Job Postings", href: "#Jobs" },
-  { label: "Coding Practice", href:"#Coding"},
-  { label: "ATS Optimization", href: "#ATS" },
-  { label: "Resume Editor", href: "#Resume" },
-  { label: "Keyword Extraction", href: "#Keyword" },
-  { label: "Immigration News", href: "#ImmigrationNews" },
-  // { label: "Section 3", href: "#Resume" },
-];
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-    <head>
-   </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col`}
-      >
-{/* Layout Wrapper */}
-<div className="flex flex-grow w-full">
-          {/* Sidebar: Takes up fixed width */}
-          <div className="w-[15%] min-h-screen bg-gray-900">
-            <Sidebar links={navLinks} />
-          </div>
-          
-          {/* Main Content Area: Takes up remaining space */}
-          <main className="w-[85%] p-8 flex-grow">{children}</main>
-        </div>
-        
+      <head></head>
+      <body className="antialiased flex flex-col pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+        <LoaderWrapper />
+            <main className="p-0 flex-grow">{children}</main>
         {/* Footer Always at Bottom */}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );

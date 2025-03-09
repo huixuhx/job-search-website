@@ -1,98 +1,128 @@
-import LogoItem from "@/components/LogoItem";
-import NewsList from "@/components/NewsList";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaEnvelope,
+  FaCode,
+} from "react-icons/fa";
+import EarthScene from "@/components/journey/EarthScene";
+import AdvancedCircularGallery from "@/components/AdvancedCircularGallery";
+import News from "@/components/BlogList";
+import {
+  AnimatedList,
+  MotionPlay,
+  CodeBlock,
+  DynamicFade,
+  JobCarousel,
+  JobCubeScroller,
+  BlogList,
+} from "@/components/MotionPlay";
+import TechStack from "@/components/TechStack";
 export default function Home() {
-
-  const jobSites = [
-    { id: 1, name: "LinkedIn", url: "https://www.linkedin.com/jobs", icon: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" },
-    { id: 2, name: "Indeed Canada", url: "https://ca.indeed.com", icon: "/logos/Indeed_Logo_Blue.svg" },
-    { id: 3, name: "Glassdoor Canada", url: "https://www.glassdoor.ca", icon: "/logos/glassdoor-ar21~bgwhite.svg" },
-    { id: 4, name: "TalentEgg", url: "https://www.talentegg.ca/", icon: "/logos/talentEgg.png" },
-    { id: 5, name: "Canada Job Bank", url: "https://www.jobbank.gc.ca/", icon: "/logos/jobbank.svg" },
-    // { id: 6, name: "Tech Jobs Canada", url: "https://www.techjobs.ca/", icon: "https://www.techjobs.ca/favicon.ico" },
-    { id: 6, name: "Van People", url: "https://www.vanpeople.com", icon: "/logos/vanpeople_logo.jpeg" },
-    { id: 7, name: "Van Sky", url: "https://www.vansky.com", icon: "https://www.vansky.com/favicon.ico" }
-];
-
-const codingPracticeSites = [
-  { id: 1, name: "LeetCode", url: "https://leetcode.com", icon: "/logos/leetcode.png" },
-  { id: 2, name: "CodeWars", url: "https://www.codewars.com", icon: "/logos/codewars.png" },
-  { id: 3, name: "NeetCode", url: "https://neetcode.io/", icon: "/logos/neetcode-io-logo.png"}
-];
-  
-  const atsTools = [
-    { id: 1, name: "Jobscan", url: "https://www.jobscan.co", icon: "/logos/jobscan.jpeg" },
-    { id: 2, name: "ResumeWorded", url: "https://www.resumeworded.com", icon: "/logos/resumeworded.png" },
-    { id: 3, name: "Teal Resume Builder", url: "https://www.tealhq.com/resume-builder", icon: "/logos/TealResumeBuilder.png" },
-    // { id: 4, name: "Enhancv", url: "https://enhancv.com", icon: "https://d1eipm3vz40hy0.cloudfront.net/images/enhancv-social-image-1080x1080.png" },
-    // { id: 5, name: "Zety Resume Builder", url: "https://zety.com/resume-builder", icon: "https://zety.com/img/favicons/favicon-256x256.png" }
-  ];
-
-  const resumeEditingTools = [
-    { id: 1, name: "Overleaf", url: "https://www.overleaf.com", icon: "https://www.overleaf.com/favicon.ico" },
-    { id: 2, name: "Typst", url: "https://typst.app", icon: "https://typst.app/favicon.ico" },
-    { id: 3, name: "Canva", url: "https://www.canva.com/resumes/templates", icon: "https://www.canva.com/favicon.ico" },
-    { id: 4, name: "Resumake", url: "https://resumake.io", icon: "https://resumake.io/favicon.ico" },
-    { id: 5, name: "Resume.io", url: "https://resume.io", icon: "https://resume.io/favicon.ico" },
-    { id: 6, name: "LaTeX Resume Templates", url: "https://www.latextemplates.com/cat/curricula-vitae", icon: "https://www.latextemplates.com/favicon.ico" },
-    { id: 7, name: "VisualCV", url: "https://www.visualcv.com", icon: "https://www.visualcv.com/favicon.ico" }
-];
-const jobDescriptionTools = [
-  { id: 1, name: "YAKE!", url: "https://github.com/LIAAD/yake", icon: "https://github.githubassets.com/favicons/favicon.png" },
-  { id: 2, name: "TextRank", url: "https://github.com/davidadamojr/TextRank", icon: "https://github.githubassets.com/favicons/favicon.png" },
-  { id: 3, name: "spaCy", url: "https://spacy.io", icon: "https://spacy.io/static/favicon.ico" },
-  { id: 4, name: "WordClouds", url: "https://www.wordclouds.com", icon: "https://www.wordclouds.com/favicon.ico" },
-  { id: 5, name: "Jason Davies Word Cloud", url: "https://www.jasondavies.com/wordcloud/", icon: "https://www.jasondavies.com/favicon.ico" },
-  { id: 6, name: "TagCrowd", url: "https://tagcrowd.com", icon: "https://tagcrowd.com/favicon.ico" }
-];
   return (
-    <div className="space-y-32">
-     <section id = "Jobs" className="bg-transparent p-6 rounded-lg shadow-lg mb-2 ">
-        <h2 className="text-2xl font-bold mb-4">Job Postings</h2>
-        <div className="flex flex-wrap gap-4">
-          {jobSites.map((site) =>(
-            <LogoItem key={site.id} name={site.name} url={site.url} icon={site.icon} />
-          ))}
-        </div>
-      </section>
+    <>
+      <div className="relative flex flex-col md:block h-full gap-4 bg-[radial-gradient(#182b34,#2d1d34)] md:block w-full md:h-screen ">
+        <div className="container my-2 md:my-0 md:absolute flex flex-col mx-auto md:top-10 z-100 md:left-10 md:mx-0 md:ml-5 space-y-2 pointer-events-none select-none">
+          <div className="w-24 h-24 mx-auto md:mx-0 md:h-36 rounded-full border-4 border-white overflow-hidden shadow-lg">
+            <Image
+              src="/avatar.jpeg"
+              width={96}
+              height={96}
+              alt="Avatar"
+              priority
+              className="object-cover object-top w-full h-full scale-150 -translate-y-1 translate-x-1"
+            />
+          </div>
+          {/* 第一行：名字 */}
+          <div className="flex flex-col mx-auto my-2 md:my-0 md:mx-0 md:block">
+            <span className="text-md md:text-sm text-gray-300">
+              My name is{" "}
+            </span>
+            <span className="text-xl font-bold">Hui Xu.</span>
+          </div>
 
-      <section id = "Coding" className="bg-transparent p-6 rounded-lg shadow-lg mb-2 ">
-        <h2 className="text-2xl font-bold mb-4">Coding Practice</h2>
-        <div className="flex flex-wrap gap-4">
-          {codingPracticeSites.map((site) =>(
-            <LogoItem key={site.id} name={site.name} url={site.url} icon={site.icon} />
-          ))}
-        </div>
-      </section>
+          {/* 第二行：网站介绍 */}
 
-      <section id="ATS" className="bg-transparent p-6 rounded-lg shadow-lg mb-2 ">
-        <h2 className="text-2xl font-bold mb-4">ATS Optimization</h2>
-        <div className="flex flex-wrap gap-4">
-          {atsTools.map((tool) => (
-            <LogoItem key={tool.id} name={tool.name} url={tool.url} icon={tool.icon} />
-          ))}
-        </div>
-      </section>
+          <div className="flex flex-col mx-auto md:mx-0 md:block">
+            <span className="text-md md:text-sm text-gray-300 text-center md:text-left">
+              I am a{" "}
+            </span>
+            <span className="text-xl font-bold">Software Engineer, </span>
+          </div>
 
-      <section id="Resume" className="bg-transparent p-6 rounded-lg shadow-lg mb-2 ">
-        <h2 className="text-2xl font-bold mb-4">Resume Editor</h2>
-        <div className="flex flex-wrap gap-4">
-          {resumeEditingTools.map((tool) => (
-            <LogoItem key={tool.id} name={tool.name} url={tool.url} icon={tool.icon} />
-          ))}
+          <div className="flex flex-col mx-auto md:flex-row md:mx-0 md:items-baseline md:space-x-1 pointer-events-auto">
+            <span className="text-md md:text-sm text-gray-300 text-center md:inline-block md:text-left">
+              But I am also a(n){" "}
+            </span>
+            <JobCarousel config="relative h-8 min-w-[300px] py-3 items-center justify-center" />
+          </div>
+          <div className="mt-3 flex flex-col mx-auto md:mx-0 md:block">
+            <span className="text-md md:text-sm text-gray-300 text-center md:text-left">
+              I live in{" "}
+            </span>
+            <span className="text-xl font-bold">British Columbia, Canada.</span>
+          </div>
+          <p className="text-sm text-gray-300 text-center md:text-left">
+            Welcome to my Website!
+          </p>
+          {/* 第三行：社交平台图标 */}
+          <div className="flex space-x-4 mt-2 mx-auto md:mx-0 pointer-events-auto">
+            <Link href="https://github.com/huixuhx" passHref legacyBehavior>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center text-2xl text-gray-300 hover:text-white hover:scale-110 transition-transform transform-gpu duration-200"
+              >
+                <FaGithub />
+              </a>
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/huixuhx"
+              passHref
+              legacyBehavior
+            >
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center text-2xl text-blue-500 hover:text-blue-400 hover:scale-110 transition-transform transform-gpu duration-200"
+              >
+                <FaLinkedin />
+              </a>
+            </Link>
+            <a
+              href="mailto:huixuhx@outlook.com"
+              className="inline-flex items-center justify-center text-2xl text-gray-300 hover:text-white hover:scale-110 transition-transform transform-gpu duration-200 pointer-events-auto"
+            >
+              <FaEnvelope />
+            </a>
+            <Link
+              href="https://leetcode.cn/u/bravado-9"
+              passHref
+              legacyBehavior
+            >
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center text-2xl text-yellow-400 hover:text-yellow-300 hover:scale-110 transition-transform transform-gpu duration-200"
+              >
+                <FaCode />
+              </a>
+            </Link>
+          </div>
         </div>
-      </section>
-      <section id="Keyword" className="bg-transparent p-6 rounded-lg shadow-lg mb-2 ">
-        <h2 className="text-2xl font-bold mb-4">Keyword Extraction</h2>
-        <div className="flex flex-wrap gap-4">
-          {jobDescriptionTools.map((tool) => (
-            <LogoItem key={tool.id} name={tool.name} url={tool.url} icon={tool.icon} />
-          ))}
+
+        {/* ✅ 右侧 Journey List */}
+        <div className="container md:absolute container z-100 md:top-0 md:right-0 md:w-3/10 md:backdrop-blur-xs md:bg-opacity-20 md:p-4 rounded-lg pointer-events-auto">
+          <BlogList className={"relative  overflow-visible "} />
         </div>
-      </section>
-     <section id="ImmigrationNews" className = "bg-transparent p-6 rounded-lg shadow-lg mb-2 ">
-      <h2 className="text-2xl font-bold mb-4">Immigration News This Month</h2>
-      <NewsList />
-     </section>
-    </div>
+
+        <div className="hidden md:block">
+          <EarthScene />
+        </div>
+        <TechStack />
+      </div>
+    </>
   );
 }
